@@ -52,7 +52,9 @@ class WeeklyForecast {
             case .success(let value as [String: Any]):
                print("Success")
                 if let dictionary = value as? Dictionary<String,AnyObject> {
-                    if let list = dictionary["data"] as? [Dictionary<String,AnyObject>] {
+                    if var list = dictionary["data"] as? [Dictionary<String,AnyObject>] {
+                        //현재 요일은 삭제해준다.
+                        list.removeFirst()
                         for item in list{
                             let forecast = WeeklyForecast(weatherDictionary: item)
                             weeklyForecastArray.append(forecast)

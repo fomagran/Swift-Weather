@@ -11,15 +11,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        HourlyForecast.downloadHourlyForecastWeather { (hourlyForecastArray) in
-            for  data in hourlyForecastArray {
-                print("forecastData:",data.temperature)
-            }
-        }
+
         
         WeeklyForecast.downloadWeeklyForecastWeather { (weeklyForecastArray) in
             for  data in weeklyForecastArray {
-                print("forecastData:",data.temperature)
+                print("forecastData:",data.date)
             }
         }
         
