@@ -1,24 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Weather View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WeatherViewController" customModule="Swift_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfB-kJ-nqR">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </scrollView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DkH-R1-hmf">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JhH-xF-g13"/>
+                                    <barButtonItem style="plain" id="WQS-r9-Ius">
+                                        <pageControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="CIe-go-1xK">
+                                            <rect key="frame" x="145.5" y="13" width="123" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </pageControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="snw-iX-gat"/>
+                                    <barButtonItem systemItem="add" id="qpa-dN-ylV">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </toolbar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DkH-R1-hmf" firstAttribute="top" secondItem="OfB-kJ-nqR" secondAttribute="bottom" id="D86-Mx-4Rl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DkH-R1-hmf" secondAttribute="trailing" id="MO9-wd-WA9"/>
+                            <constraint firstItem="OfB-kJ-nqR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RNK-gM-kFl"/>
+                            <constraint firstItem="OfB-kJ-nqR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Tsf-jk-fVO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DkH-R1-hmf" secondAttribute="bottom" id="Xkk-r8-4Cy"/>
+                            <constraint firstItem="OfB-kJ-nqR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="g5o-tO-LDB"/>
+                            <constraint firstItem="DkH-R1-hmf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wt1-fD-q8G"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="CIe-go-1xK" id="8PZ-VU-dOs"/>
+                        <outlet property="scrollView" destination="OfB-kJ-nqR" id="J63-Xp-DUI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="69.642857142857139"/>
         </scene>
     </scenes>
 </document>

@@ -7,8 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class WeatherViewController: UIViewController {
 
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
