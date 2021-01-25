@@ -120,7 +120,6 @@ class CurrentWeather {
     
     //completion으로 콜백함수 만들기
     func getCurrentWeather(completion:@escaping(_ success:Bool) -> Void) {
-        let LOCATIONAPI_URL = "https://api.weatherbit.io/v2.0/current?city=Seoul,KR&key=7db3d9a63ac04f71b3de7601957edba4"
         
         //Swift5부터 AF로 바뀜.
         AF.request(LOCATIONAPI_URL).responseJSON { (response) in

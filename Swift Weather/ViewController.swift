@@ -11,13 +11,19 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let currentWeather = CurrentWeather()
-        //콜백함수 받기
-        currentWeather.getCurrentWeather { (success) in
-            if success {
-                print(currentWeather.city)
+        HourlyForecast.downloadHourlyForecastWeather { (hourlyForecastArray) in
+            for  data in hourlyForecastArray {
+                print("forecastData:",data.temperature)
             }
         }
+        
+        WeeklyForecast.downloadWeeklyForecastWeather { (weeklyForecastArray) in
+            for  data in weeklyForecastArray {
+                print("forecastData:",data.temperature)
+            }
+        }
+        
+        
         
     }
 
