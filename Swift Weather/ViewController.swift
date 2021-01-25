@@ -11,7 +11,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CurrentWeather.getCurrentWeather()
+        let currentWeather = CurrentWeather()
+        //콜백함수 받기
+        currentWeather.getCurrentWeather { (success) in
+            if success {
+                print(currentWeather.city)
+            }
+        }
+        
     }
 
 
