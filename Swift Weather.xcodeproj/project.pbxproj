@@ -19,6 +19,8 @@
 		04D6E50425B9810E000538C2 /* Assets in Resources */ = {isa = PBXBuildFile; fileRef = 04D6E50325B9810E000538C2 /* Assets */; };
 		04D6E50A25B9812D000538C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D6E50925B9812D000538C2 /* Assets.xcassets */; };
 		04D6E50E25B98166000538C2 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6E50D25B98166000538C2 /* CurrentWeather.swift */; };
+		04F9E1F625C166FA00E3E8C4 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9E1F425C166FA00E3E8C4 /* WeatherView.swift */; };
+		04F9E1F725C166FA00E3E8C4 /* WeatherView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F9E1F525C166FA00E3E8C4 /* WeatherView.xib */; };
 		FE3ACCD3952DE4B35F0A27AF /* Pods_Swift_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 415CE9A219514285C24D7F90 /* Pods_Swift_Weather.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		04D6E50325B9810E000538C2 /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
 		04D6E50925B9812D000538C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D6E50D25B98166000538C2 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		04F9E1F425C166FA00E3E8C4 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		04F9E1F525C166FA00E3E8C4 /* WeatherView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherView.xib; sourceTree = "<group>"; };
 		3610484074C3FD6DEAD6B40C /* Pods-Swift Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift Weather.debug.xcconfig"; path = "Target Support Files/Pods-Swift Weather/Pods-Swift Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		415CE9A219514285C24D7F90 /* Pods_Swift_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7862CB095D4742011368D38A /* Pods-Swift Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift Weather.release.xcconfig"; path = "Target Support Files/Pods-Swift Weather/Pods-Swift Weather.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 		04A79E9825B6BDC400754FDD /* Swift Weather */ = {
 			isa = PBXGroup;
 			children = (
+				04F9E1F925C1670D00E3E8C4 /* View */,
 				0436FD3825BED9CF003ACF73 /* ViewController */,
 				04D6E50C25B98155000538C2 /* Model */,
 				04A79E9925B6BDC400754FDD /* AppDelegate.swift */,
@@ -106,6 +111,15 @@
 				0436FD3425BED560003ACF73 /* WeeklyForecast.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		04F9E1F925C1670D00E3E8C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04F9E1F425C166FA00E3E8C4 /* WeatherView.swift */,
+				04F9E1F525C166FA00E3E8C4 /* WeatherView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		067E8D64E7FC41BDA00EDF08 /* Frameworks */ = {
@@ -184,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F9E1F725C166FA00E3E8C4 /* WeatherView.xib in Resources */,
 				04A79EA625B6BDC500754FDD /* LaunchScreen.storyboard in Resources */,
 				04D6E50425B9810E000538C2 /* Assets in Resources */,
 				04D6E50A25B9812D000538C2 /* Assets.xcassets in Resources */,
@@ -246,6 +261,7 @@
 				0436FD2F25BECD25003ACF73 /* HourlyForecast.swift in Sources */,
 				0436FD3225BECE2E003ACF73 /* Constants.swift in Sources */,
 				04D6E50E25B98166000538C2 /* CurrentWeather.swift in Sources */,
+				04F9E1F625C166FA00E3E8C4 /* WeatherView.swift in Sources */,
 				04A79E9C25B6BDC400754FDD /* SceneDelegate.swift in Sources */,
 				0436FD3525BED560003ACF73 /* WeeklyForecast.swift in Sources */,
 			);

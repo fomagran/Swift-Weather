@@ -14,17 +14,8 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        WeeklyForecast.downloadWeeklyForecastWeather { (weeklyForecastArray) in
-            for  data in weeklyForecastArray {
-                print("forecastData:",data.date)
-            }
-        }
-        
-        
-        
+    
+
     }
-
-
 }
 

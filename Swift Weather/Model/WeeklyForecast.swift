@@ -44,7 +44,6 @@ class WeeklyForecast {
     
     class func downloadWeeklyForecastWeather(completion:@escaping(_ weatherForecast:[WeeklyForecast])->Void) {
         
-        
         AF.request(WEEKLYFORECAST_URL).responseJSON { (response) in
             let result = response.result
             var weeklyForecastArray:[WeeklyForecast] = []
