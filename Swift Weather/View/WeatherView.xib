@@ -10,7 +10,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherView" customModule="Swift_Weather" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="bottomContainer" destination="smD-Gj-3BE" id="L4h-sl-6NT"/>
+                <outlet property="cityLabel" destination="W6A-fR-NaV" id="40J-aG-gLo"/>
+                <outlet property="dateLabel" destination="3bR-D5-LNc" id="iZd-ea-kLl"/>
+                <outlet property="hourlyWeatherCollectionView" destination="ZGT-Pj-fys" id="cZ7-JW-P3v"/>
+                <outlet property="infoCollectionView" destination="mwf-wk-C3R" id="Eet-fo-cM6"/>
+                <outlet property="mainView" destination="i5M-Pr-FkT" id="StH-6k-NYy"/>
+                <outlet property="scrollView" destination="G4H-nz-ehq" id="mek-Ik-2Gb"/>
+                <outlet property="tableView" destination="3kd-2L-oSc" id="UOu-La-Ixr"/>
+                <outlet property="temperatureLabel" destination="MYr-TN-MEO" id="C7f-0Y-2Dv"/>
+                <outlet property="weatherInfoLabel" destination="zsP-Pv-otG" id="FS1-Pe-owZ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -42,7 +51,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsP-Pv-otG">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeatherInfo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsP-Pv-otG">
                             <rect key="frame" x="10" y="182" width="385" height="21"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <nil key="textColor"/>
