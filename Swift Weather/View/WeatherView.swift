@@ -9,6 +9,7 @@ import UIKit
 
 class WeatherView: UIView {
 
+    //MARK:IBOutlets
     @IBOutlet weak var weatherInfoLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -19,6 +20,10 @@ class WeatherView: UIView {
     @IBOutlet weak var hourlyWeatherCollectionView: UICollectionView!
     @IBOutlet weak var infoCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: Variables
+    var currentWeather:CurrentWeather!
+    
     
     override init(frame:CGRect) {
         super.init(frame: frame)
@@ -46,6 +51,19 @@ class WeatherView: UIView {
         
     }
     private func setUpInfoCollectionVIew() {
+        
+    }
+    
+    func refreshData() {
+        setUpCurrentWeather()
+    }
+    
+    
+    private func setUpCurrentWeather() {
+        cityLabel.text = currentWeather.city
+        dateLabel.text = "Today, \(currentWeather.date.shortDate())"
+        weatherInfoLabel.text = currentWeather.weatherType
+        temperatureLabel.text = "\(currentWeather.currentTemp)"
         
     }
     
