@@ -5,7 +5,7 @@
 //  Created by Fomagran on 2021/01/25.
 //
 
-import Foundation
+import UIKit
 
 //타임스탬프 Date로 변환하기
 func currentDateFromUnix(unixDate:Double?) -> Date? {
@@ -15,4 +15,10 @@ func currentDateFromUnix(unixDate:Double?) -> Date? {
     }else{
         return Date()
     }
+}
+
+
+//글자로 이미지 만들기
+func getWeatherIconFor(_ type:String) -> UIImage? {
+    return UIImage(named: type)
 }
