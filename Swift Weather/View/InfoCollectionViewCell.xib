@@ -16,8 +16,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yQf-Qt-yyz">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feelsLike" translatesAutoresizingMaskIntoConstraints="NO" id="yQf-Qt-yyz">
                         <rect key="frame" x="25" y="45" width="30" height="30"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="CiT-0d-e2P"/>
                             <constraint firstAttribute="height" constant="30" id="xdt-v2-UQD"/>
@@ -38,6 +39,7 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="yQf-Qt-yyz" secondAttribute="bottom" constant="5" id="8Z2-8g-DZX"/>
                 <constraint firstAttribute="trailing" secondItem="Oc5-iL-G5y" secondAttribute="trailing" id="BLC-St-VPi"/>
@@ -56,4 +58,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="79.6875"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="feelsLike" width="30" height="30"/>
+    </resources>
 </document>

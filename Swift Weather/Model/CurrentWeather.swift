@@ -100,7 +100,7 @@ class CurrentWeather {
         if _windSpeed == nil {
             _windSpeed = 0.0
         }
-        return _pressure
+        return _windSpeed
     }
     
     var weatherIcon:String {

@@ -8,7 +8,7 @@
 import UIKit
 
 struct WeatherInfo {
-    var infoText:String
-    var nameText:String
+    var infoText:String!
+    var nameText:String?
     var image:UIImage?
 }
