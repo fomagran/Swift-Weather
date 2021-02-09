@@ -19,13 +19,19 @@ class WeatherViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let weatherView = WeatherView()
-        scrollView.addSubview(weatherView)
-        weatherView.frame = CGRect(x: 0, y: 0, width:scrollView.bounds.width, height: scrollView.bounds.height)
-        weatherView.currentWeather = CurrentWeather()
-        weatherView.currentWeather.getCurrentWeather { (success) in
-            weatherView.refreshData()
-        }
+  
+    }
+    
+    
+    //MARK:Download Weather
+    private func getCurrentWeather() {
+        
+    }
+    private func getWeeklyWeahter() {
+        
+    }
+    private func getHourlyWeather() {
+        
     }
 }
 
