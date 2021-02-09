@@ -58,7 +58,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="300" id="4i5-8N-tAe"/>
                         <constraint firstItem="zsP-Pv-otG" firstAttribute="top" secondItem="MYr-TN-MEO" secondAttribute="bottom" constant="10" id="51O-R9-mvR"/>
@@ -75,15 +75,15 @@
                         <constraint firstItem="zsP-Pv-otG" firstAttribute="trailing" secondItem="MYr-TN-MEO" secondAttribute="trailing" id="vaQ-es-dlO"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4H-nz-ehq">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G4H-nz-ehq">
                     <rect key="frame" x="0.0" y="304" width="414" height="592"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smD-Gj-3BE">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                             <subviews>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZGT-Pj-fys">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ZGT-Pj-fys">
                                     <rect key="frame" x="4" y="0.0" width="406" height="100"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="100" id="2Rd-8v-FiK"/>
                                     </constraints>
@@ -94,9 +94,9 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mwf-wk-C3R">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mwf-wk-C3R">
                                     <rect key="frame" x="4" y="104" width="406" height="80"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="80" id="fgy-jq-j9h"/>
                                     </constraints>
@@ -107,12 +107,12 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3kd-2L-oSc">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3kd-2L-oSc">
                                     <rect key="frame" x="4" y="188" width="406" height="308"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="3kd-2L-oSc" firstAttribute="top" secondItem="mwf-wk-C3R" secondAttribute="bottom" constant="4" id="CP9-vO-lgf"/>
                                 <constraint firstItem="mwf-wk-C3R" firstAttribute="trailing" secondItem="ZGT-Pj-fys" secondAttribute="trailing" id="MzK-hp-Zar"/>
@@ -133,13 +133,14 @@
                         <constraint firstItem="smD-Gj-3BE" firstAttribute="height" secondItem="G4H-nz-ehq" secondAttribute="height" multiplier="0.844595" priority="250" id="E1H-be-aeK"/>
                         <constraint firstItem="smD-Gj-3BE" firstAttribute="width" secondItem="G4H-nz-ehq" secondAttribute="width" id="Fo8-ty-5Q1"/>
                         <constraint firstItem="smD-Gj-3BE" firstAttribute="top" secondItem="G4H-nz-ehq" secondAttribute="top" id="Olv-mC-JnR"/>
+                        <constraint firstAttribute="bottom" secondItem="smD-Gj-3BE" secondAttribute="bottom" id="acd-XO-Dar"/>
                         <constraint firstItem="smD-Gj-3BE" firstAttribute="leading" secondItem="G4H-nz-ehq" secondAttribute="leading" id="fgW-ds-rOM"/>
                         <constraint firstAttribute="trailing" secondItem="smD-Gj-3BE" secondAttribute="trailing" id="tVl-5c-VPR"/>
                     </constraints>
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="G4H-nz-ehq" firstAttribute="top" secondItem="kOR-ul-PHi" secondAttribute="bottom" constant="4" id="Q9O-aw-h9g"/>
                 <constraint firstAttribute="bottom" secondItem="G4H-nz-ehq" secondAttribute="bottom" id="bpQ-Rh-rXl"/>
@@ -154,12 +155,6 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
