@@ -25,7 +25,7 @@ class WeatherViewController: UIViewController {
         weatherView.frame = CGRect(x: 0, y: 0, width: scrollView.bounds.width, height: scrollView.bounds.height)
         scrollView.addSubview(weatherView)
         
-        weahterLaction = WeatherLocation(city: "Limassol", country: "Cyprus", countryCode: "CY", isCurrentLocation: false)
+        weahterLaction = WeatherLocation(city: "Incheon", country: "Korea", countryCode: "KR", isCurrentLocation: false)
         
         getCurrentWeather(weatherView: weatherView)
         getWeeklyWeahter(weatherView: weatherView)
