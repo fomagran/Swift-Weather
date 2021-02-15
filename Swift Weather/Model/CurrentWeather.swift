@@ -119,10 +119,19 @@ class CurrentWeather {
 
     
     //completion으로 콜백함수 만들기
-    func getCurrentWeather(completion:@escaping(_ success:Bool) -> Void) {
+    func getCurrentWeather(location:WeatherLocation,completion:@escaping(_ success:Bool) -> Void) {
+        
+        var url:String!
+        
+        if !location.isCurrentLocation {
+            url = String(format: "https://api.weatherbit.io/v2.0/current?city=%@,%@&key=7db3d9a63ac04f71b3de7601957edba4", location.city,location.countryCode)
+        }else{
+            url = CURRENT_LOCATIONAPI_URL
+        }
+        
         
         //Swift5부터 AF로 바뀜.
-        AF.request(LOCATIONAPI_URL).responseJSON { (response) in
+        AF.request(url).responseJSON { (response) in
             let result = response.result
             switch result {
             case .success(let value as [String: Any]):
