@@ -19,6 +19,9 @@ class ChooseCityViewController: UIViewController {
     var filteredLocation:[WeatherLocation] = []
     
     let searchController = UISearchController(searchResultsController: nil)
+    
+    let userDefaults = UserDefaults.standard
+    var savedLocations: [WeatherLocation]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +32,7 @@ class ChooseCityViewController: UIViewController {
         tableView.tableHeaderView = searchController.searchBar
         loadLocationsFromCSV()
         setUpSearchController()
-        
+        loadFromDefaults()
        
     }
     
@@ -78,13 +81,36 @@ class ChooseCityViewController: UIViewController {
         allLocations.append(weatherLocation)
     }
     
+    //MARK: UserDefaults
+    
+    private func saveToUserrDefaults(location:WeatherLocation) {
+        if savedLocations != nil {
+            if !savedLocations!.contains(location) {
+                savedLocations!.append(location)
+            }
+        }else{
+            savedLocations = [location]
+        }
+        //UserDefaults에 저장하기 위해선 encode해서 데이터로 넣어야함.
+        userDefaults.setValue(try? PropertyListEncoder().encode(savedLocations!), forKey: "Locations")
+        userDefaults.synchronize()
+    }
+    
+    private func loadFromDefaults() {
+        if let data = userDefaults.value(forKey: "Locations") as? Data {
+            //데이터로 저장한 객체 decode해줌.
+            savedLocations = try? PropertyListDecoder().decode(Array<WeatherLocation>.self,from: data)
+            print(savedLocations?.first?.city)
+        }
+    }
 }
 
 
 extension ChooseCityViewController:UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select")
+        tableView.deselectRow(at: indexPath, animated: true)
+        saveToUserrDefaults(location: filteredLocation[indexPath.row])
     }
     
 }
@@ -103,6 +129,7 @@ extension ChooseCityViewController:UITableViewDataSource {
         cell.detailTextLabel?.text = location.country
         return cell
     }
+    
 }
 
 extension ChooseCityViewController:UISearchResultsUpdating {
