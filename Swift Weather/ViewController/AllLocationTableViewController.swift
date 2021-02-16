@@ -84,7 +84,7 @@ class AllLocationTableViewController: UITableViewController {
 
 extension AllLocationTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        print("select")
     }
     
 }
