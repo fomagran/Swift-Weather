@@ -63,6 +63,10 @@ class WeatherViewController: UIViewController {
         }
     }
     
+    private func getWeather() {
+        
+    }
+    
     private func locationManagerStart() {
         if locationManager == nil {
             locationManager = CLLocationManager()
@@ -94,6 +98,9 @@ extension WeatherViewController:CLLocationManagerDelegate{
         if manager.authorizationStatus == .authorizedWhenInUse {
             currentLocation = locationManager!.location?.coordinate
             if currentLocation != nil {
+                LocationService.shared.latitude = currentLocation.latitude
+                LocationService.shared.longitude = currentLocation.longitude
+                
                 
             }else{
                 locationManagerDidChangeAuthorization(manager) 
