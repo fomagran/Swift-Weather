@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04080E6325DB58610061220C /* ChoosCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04080E6225DB58610061220C /* ChoosCityTableViewCell.swift */; };
+		04080E6625DB68CA0061220C /* AllLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04080E6525DB68CA0061220C /* AllLocationTableViewCell.swift */; };
 		0436FD2C25BEC912003ACF73 /* GlobalHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436FD2B25BEC912003ACF73 /* GlobalHelpers.swift */; };
 		0436FD2F25BECD25003ACF73 /* HourlyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436FD2E25BECD25003ACF73 /* HourlyForecast.swift */; };
 		0436FD3225BECE2E003ACF73 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436FD3125BECE2E003ACF73 /* Constants.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		04080E6225DB58610061220C /* ChoosCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosCityTableViewCell.swift; sourceTree = "<group>"; };
+		04080E6525DB68CA0061220C /* AllLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllLocationTableViewCell.swift; sourceTree = "<group>"; };
 		0436FD2B25BEC912003ACF73 /* GlobalHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalHelpers.swift; sourceTree = "<group>"; };
 		0436FD2E25BECD25003ACF73 /* HourlyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecast.swift; sourceTree = "<group>"; };
 		0436FD3125BECE2E003ACF73 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				04932D3E25D2244600AE69A9 /* WeatherTableViewCell.swift */,
 				04932D3F25D2244600AE69A9 /* WeatherTableViewCell.xib */,
 				04080E6225DB58610061220C /* ChoosCityTableViewCell.swift */,
+				04080E6525DB68CA0061220C /* AllLocationTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				0467C3CF25DA2443006BE6D9 /* AllLocationTableViewController.swift in Sources */,
 				0436FD3225BECE2E003ACF73 /* Constants.swift in Sources */,
 				0467C3D225DA2452006BE6D9 /* ChooseCityViewController.swift in Sources */,
+				04080E6625DB68CA0061220C /* AllLocationTableViewCell.swift in Sources */,
 				04932D3825D2217100AE69A9 /* InfoCollectionViewCell.swift in Sources */,
 				04F9E1FC25C171D100E3E8C4 /* Extensions.swift in Sources */,
 				04D6E50E25B98166000538C2 /* CurrentWeather.swift in Sources */,
