@@ -18,8 +18,15 @@ class WeatherViewController: UIViewController {
     var locationManager:CLLocationManager?
     var currentLocation:CLLocationCoordinate2D!
     
+    let userDefaults = UserDefaults.standard
+    
+    var allLocations:[WeatherLocation] = []
+    var allWeatherView:[WeatherView] = []
+    var allWeatherData:[CityTempData] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManagerStart()
         
         
     }
@@ -64,6 +71,21 @@ class WeatherViewController: UIViewController {
     }
     
     private func getWeather() {
+        loadLocationFromUserDefaults()
+    }
+    
+    private func loadLocationFromUserDefaults() {
+        
+        let currentLocation = WeatherLocation(city: "", country: "", countryCode: "", isCurrentLocation: true)
+        
+        if let data = userDefaults.value(forKey: "Locations") as? Data {
+            allLocations = try! PropertyListDecoder().decode(Array<WeatherLocation>.self, from: data)
+            
+            allLocations.insert(currentLocation, at: 0)
+            
+        }else {
+            allLocations.append(currentLocation)
+        }
         
     }
     
@@ -100,14 +122,13 @@ extension WeatherViewController:CLLocationManagerDelegate{
             if currentLocation != nil {
                 LocationService.shared.latitude = currentLocation.latitude
                 LocationService.shared.longitude = currentLocation.longitude
-                
+                getWeather()
                 
             }else{
                 locationManagerDidChangeAuthorization(manager) 
             }
         }else{
-            locationManager?.requestWhenInUseAuthorization()
-            locationManagerDidChangeAuthorization(manager)
+            print("위치 정보를 설정해주세요!")
         }
     }
 }
