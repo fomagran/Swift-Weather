@@ -8,6 +8,8 @@
 import UIKit
 import CoreLocation
 
+//시뮬레이터로 돌릴때 Feature - Location - Apple 로 설정하면 오류 없어짐
+
 class WeatherViewController: UIViewController {
     
     @IBOutlet weak var pageControl: UIPageControl!
@@ -32,6 +34,8 @@ class WeatherViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        locationManagerDidChangeAuthorization(locationManager!)
         
 //        let weatherView = WeatherView()
 //        weatherView.frame = CGRect(x: 0, y: 0, width: scrollView.bounds.width, height: scrollView.bounds.height)
