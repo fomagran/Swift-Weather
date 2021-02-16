@@ -75,17 +75,18 @@
                             <rect key="frame" x="0.0" y="142" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xw-ho-CIE">
-                                    <rect key="frame" x="354" y="7" width="30" height="30"/>
-                                    <state key="normal" title="Add">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xw-ho-CIE">
+                                    <rect key="frame" x="366" y="11" width="18" height="22"/>
+                                    <state key="normal" image="plus" catalog="system">
+                                        <color key="titleColor" systemColor="linkColor"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
                                         <segue destination="0Ea-Xl-SIL" kind="show" identifier="showChooseCityViewController" id="wzM-ON-81I"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="labelColor"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="3xw-ho-CIE" secondAttribute="trailing" constant="30" id="3hA-Ec-fsD"/>
                                 <constraint firstItem="3xw-ho-CIE" firstAttribute="centerY" secondItem="IIp-0D-to8" secondAttribute="centerY" id="TKI-pM-1YB"/>
@@ -98,7 +99,35 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="17l-tq-ChA" id="Ur8-cf-iTs">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtM-eW-Qs4">
+                                            <rect key="frame" x="20" y="32.5" width="306" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCY-Yr-RIo">
+                                            <rect key="frame" x="334" y="32.5" width="60" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="lDr-tP-uXG"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MtM-eW-Qs4" firstAttribute="centerY" secondItem="Ur8-cf-iTs" secondAttribute="centerY" id="H9K-Vf-NEI"/>
+                                        <constraint firstItem="LCY-Yr-RIo" firstAttribute="centerY" secondItem="Ur8-cf-iTs" secondAttribute="centerY" id="fA5-JU-lHe"/>
+                                        <constraint firstItem="LCY-Yr-RIo" firstAttribute="leading" secondItem="MtM-eW-Qs4" secondAttribute="trailing" constant="8" id="fIq-Ky-deV"/>
+                                        <constraint firstItem="LCY-Yr-RIo" firstAttribute="trailing" secondItem="Ur8-cf-iTs" secondAttribute="trailingMargin" id="uH4-BW-LWL"/>
+                                        <constraint firstItem="MtM-eW-Qs4" firstAttribute="leading" secondItem="Ur8-cf-iTs" secondAttribute="leadingMargin" id="x8n-H5-uWJ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityLabel" destination="MtM-eW-Qs4" id="O2n-qZ-cFI"/>
+                                    <outlet property="temperatureLabel" destination="LCY-Yr-RIo" id="y6w-ww-rdl"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -110,7 +139,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tp-nH-ILp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="883" y="70"/>
+            <point key="canvasLocation" x="882.60869565217399" y="69.642857142857139"/>
         </scene>
         <!--Choose City View Controller-->
         <scene sceneID="Yt8-di-xsu">
@@ -175,8 +204,9 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -9,6 +9,9 @@ import UIKit
 
 class AllLocationTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,6 +21,12 @@ class AllLocationTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func generateCell(weatherData:CityTempData) {
+        cityLabel.text = weatherData.city
+        cityLabel.adjustsFontSizeToFitWidth = true
+        temperatureLabel.text = String(format: "%.0f C",weatherData.temp)
     }
 
 }
