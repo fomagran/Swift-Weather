@@ -32,8 +32,13 @@ class ChooseCityViewController: UIViewController {
         tableView.tableHeaderView = searchController.searchBar
         loadLocationsFromCSV()
         setUpSearchController()
-        loadFromDefaults()
        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setUpTapGesture()
+        loadFromDefaults()
     }
     
     private func setUpSearchController() {
@@ -44,7 +49,16 @@ class ChooseCityViewController: UIViewController {
         
         searchController.searchBar.searchBarStyle = UISearchBar.Style.prominent
         searchController.searchBar.sizeToFit()
-//        searchController.searchBar.backgroundImage = UIImage()
+    }
+    
+    private func setUpTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
+        self.tableView.backgroundView = UIView()
+        self.tableView.backgroundView?.addGestureRecognizer(tap)
+    }
+    
+    @objc private func tableTapped() {
+        dismissView()
     }
     
     //MARK:Get Locations
@@ -100,7 +114,16 @@ class ChooseCityViewController: UIViewController {
         if let data = userDefaults.value(forKey: "Locations") as? Data {
             //데이터로 저장한 객체 decode해줌.
             savedLocations = try? PropertyListDecoder().decode(Array<WeatherLocation>.self,from: data)
-            print(savedLocations?.first?.city)
+        }
+    }
+    
+    private func dismissView() {
+        if searchController.isActive {
+            searchController.dismiss(animated: true) {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }else {
+            dismiss(animated: true, completion: nil)
         }
     }
 }
@@ -111,6 +134,7 @@ extension ChooseCityViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         saveToUserrDefaults(location: filteredLocation[indexPath.row])
+        dismissView()
     }
     
 }
