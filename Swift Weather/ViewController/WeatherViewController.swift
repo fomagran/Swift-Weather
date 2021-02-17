@@ -29,7 +29,12 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManagerStart()
+        scrollView.delegate = self
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        locationManagerStop()
     }
     
     
@@ -39,7 +44,7 @@ class WeatherViewController: UIViewController {
         weatherView.currentWeather = CurrentWeather()
         weatherView.currentWeather.getCurrentWeather(location: location) { (success) in
         weatherView.refreshData()
-            
+            self.generateWeatherList()
         }
     }
     private func getWeeklyWeahter(weatherView:WeatherView,location:WeatherLocation) {
@@ -62,12 +67,12 @@ class WeatherViewController: UIViewController {
         loadLocationFromUserDefaults()
         createWeatherViews()
         addWeatherToScrollView()
+        setPageControl()
     }
     
     private func createWeatherViews() {
         for _ in allLocations {
             allWeatherViews.append(WeatherView())
-            print(allWeatherViews.count)
         }
     }
     
@@ -98,7 +103,15 @@ class WeatherViewController: UIViewController {
         }else {
             allLocations.append(currentLocation)
         }
+    }
+    
+    private func setPageControl() {
+        pageControl.numberOfPages = allWeatherViews.count
         
+    }
+    
+    private func setPageControlSelectedPage(currentPage:Int) {
+        pageControl.currentPage = currentPage
     }
     
     private func locationManagerStart() {
@@ -116,6 +129,15 @@ class WeatherViewController: UIViewController {
     private func locationManagerStop() {
         if locationManager != nil {
             locationManager!.stopMonitoringSignificantLocationChanges()
+        }
+    }
+    
+    //AllLocationView에 보낼 데이터들 세팅
+    private func generateWeatherList(){
+        allWeatherData = []
+        for weatherView in allWeatherViews {
+            let tempData = CityTempData(city: weatherView.currentWeather.city, temp: weatherView.currentWeather.currentTemp)
+            allWeatherData.append(tempData)
         }
     }
 }
@@ -139,5 +161,13 @@ extension WeatherViewController:CLLocationManagerDelegate{
         }else{
             print("위치 정보를 설정해주세요!")
         }
+    }
+}
+
+extension WeatherViewController:UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let value = scrollView.contentOffset.x/scrollView.frame.size.width
+        setPageControlSelectedPage(currentPage: Int(round(value)))
     }
 }
