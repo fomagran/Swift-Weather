@@ -38,6 +38,7 @@ class WeatherViewController: UIViewController {
         if shouldRefresh {
             allLocations = []
             allWeatherViews = []
+            removeViewsFromScrollView()
             locationManagerDidChangeAuthorization(locationManager!)
         }
     }
@@ -82,6 +83,13 @@ class WeatherViewController: UIViewController {
     private func createWeatherViews() {
         for _ in allLocations {
             allWeatherViews.append(WeatherView())
+        }
+    }
+    
+    //삭제해도 메인에서 살짝보이는거 삭제해주기
+    private func removeViewsFromScrollView() {
+        for view in scrollView.subviews {
+            view.removeFromSuperview()
         }
     }
     
