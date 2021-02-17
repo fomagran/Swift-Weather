@@ -57,7 +57,6 @@ class WeeklyForecast {
             var weeklyForecastArray:[WeeklyForecast] = []
             switch result {
             case .success(let value as [String: Any]):
-               print("Success")
                 if let dictionary = value as? Dictionary<String,AnyObject> {
                     if var list = dictionary["data"] as? [Dictionary<String,AnyObject>] {
                         //현재 요일은 삭제해준다.

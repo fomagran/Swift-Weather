@@ -13,6 +13,10 @@ protocol AllLocationTableViewControllerDelegate {
 
 class AllLocationTableViewController: UITableViewController {
     
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var footerView: UIView!
+    @IBOutlet weak var segment: UISegmentedControl!
+    
     //MARK:Variables
 
     var savedLocations:[WeatherLocation]?
@@ -25,17 +29,44 @@ class AllLocationTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadFromDefaults()
+        
+        tableView.tableFooterView = footerView
+        loadLocationsFromUserDefaults()
+        loadTempFormatFromUserDefaults()
       
     }
     //MARK:UserDefaults
-    private func loadFromDefaults() {
+    private func loadLocationsFromUserDefaults() {
         if let data = userDefaults.value(forKey: "Locations") as? Data {
             //데이터로 저장한 객체 decode해줌.
             savedLocations = try? PropertyListDecoder().decode(Array<WeatherLocation>.self,from: data)
         }
     }
-
+    
+    private func updateTempFormatInUserDefaults(newValue:Int) {
+        shouldRefresh = true
+        userDefaults.setValue(newValue, forKey: "TempFormat")
+        userDefaults.synchronize()
+    }
+    
+    private func loadTempFormatFromUserDefaults() {
+        
+        if let index = userDefaults.value(forKey: "TempFormat") {
+            segment.selectedSegmentIndex = index as! Int
+        }else{
+            segment.selectedSegmentIndex = 0
+        }
+    }
+    
+    //MARK:Actions
+    
+    
+    @IBAction func segmentValueChanged(_ sender: Any) {
+        updateTempFormatInUserDefaults(newValue: segment.selectedSegmentIndex)
+    }
+    
+ 
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

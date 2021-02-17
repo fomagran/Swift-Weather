@@ -59,7 +59,6 @@ class HourlyForecast {
             var forecastArray:[HourlyForecast] = []
             switch result {
             case .success(let value as [String: Any]):
-               print("Success")
                 if let dictionary = value as? Dictionary<String,AnyObject> {
                     if let list = dictionary["data"] as? [Dictionary<String,AnyObject>] {
                         for item in list{

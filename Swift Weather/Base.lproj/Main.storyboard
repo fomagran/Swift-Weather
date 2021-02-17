@@ -86,11 +86,23 @@
                                         <segue destination="0Ea-Xl-SIL" kind="show" identifier="showChooseCityViewController" id="wzM-ON-81I"/>
                                     </connections>
                                 </button>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ABH-JI-lwv">
+                                    <rect key="frame" x="8" y="6.5" width="69" height="32"/>
+                                    <segments>
+                                        <segment title="°C"/>
+                                        <segment title="°F"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="segmentValueChanged:" destination="nGH-fe-b9Y" eventType="valueChanged" id="Ff7-vW-tEN"/>
+                                    </connections>
+                                </segmentedControl>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="3xw-ho-CIE" secondAttribute="trailing" constant="30" id="3hA-Ec-fsD"/>
+                                <constraint firstItem="ABH-JI-lwv" firstAttribute="centerY" secondItem="IIp-0D-to8" secondAttribute="centerY" id="CEh-ZD-fmS"/>
                                 <constraint firstItem="3xw-ho-CIE" firstAttribute="centerY" secondItem="IIp-0D-to8" secondAttribute="centerY" id="TKI-pM-1YB"/>
+                                <constraint firstItem="ABH-JI-lwv" firstAttribute="leading" secondItem="IIp-0D-to8" secondAttribute="leading" constant="8" id="zfM-dA-CkE"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -137,6 +149,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="zO8-GC-IJv"/>
+                    <connections>
+                        <outlet property="addButton" destination="3xw-ho-CIE" id="OoE-Gw-z2e"/>
+                        <outlet property="footerView" destination="IIp-0D-to8" id="puG-0m-sAY"/>
+                        <outlet property="segment" destination="ABH-JI-lwv" id="Um7-zH-QXA"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tp-nH-ILp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
