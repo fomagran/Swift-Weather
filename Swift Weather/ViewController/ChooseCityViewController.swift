@@ -102,7 +102,7 @@ class ChooseCityViewController: UIViewController {
     
     //MARK: UserDefaults
     
-    private func saveToUserrDefaults(location:WeatherLocation) {
+    private func saveToUserDefaults(location:WeatherLocation) {
         if savedLocations != nil {
             if !savedLocations!.contains(location) {
                 savedLocations!.append(location)
@@ -138,7 +138,7 @@ extension ChooseCityViewController:UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        saveToUserrDefaults(location: filteredLocation[indexPath.row])
+        saveToUserDefaults(location: filteredLocation[indexPath.row])
         delegate?.didAdd(newLocation: filteredLocation[indexPath.row])
         dismissView()
     }

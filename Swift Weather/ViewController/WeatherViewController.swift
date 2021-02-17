@@ -23,52 +23,36 @@ class WeatherViewController: UIViewController {
     let userDefaults = UserDefaults.standard
     
     var allLocations:[WeatherLocation] = []
-    var allWeatherView:[WeatherView] = []
+    var allWeatherViews:[WeatherView] = []
     var allWeatherData:[CityTempData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManagerStart()
-        
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        locationManagerDidChangeAuthorization(locationManager!)
-        
-//        let weatherView = WeatherView()
-//        weatherView.frame = CGRect(x: 0, y: 0, width: scrollView.bounds.width, height: scrollView.bounds.height)
-//        scrollView.addSubview(weatherView)
-//
-//        weahterLaction = WeatherLocation(city: "Incheon", country: "Korea", countryCode: "KR", isCurrentLocation: false)
-//
-//        getCurrentWeather(weatherView: weatherView)
-//        getWeeklyWeahter(weatherView: weatherView)
-//        getHourlyWeather(weatherView: weatherView)
+
     }
     
     
     //MARK:Download Weather
-    private func getCurrentWeather(weatherView:WeatherView) {
+    private func getCurrentWeather(weatherView:WeatherView,location:WeatherLocation) {
         
         weatherView.currentWeather = CurrentWeather()
-        weatherView.currentWeather.getCurrentWeather(location: weahterLaction) { (success) in
+        weatherView.currentWeather.getCurrentWeather(location: location) { (success) in
         weatherView.refreshData()
             
         }
     }
-    private func getWeeklyWeahter(weatherView:WeatherView) {
+    private func getWeeklyWeahter(weatherView:WeatherView,location:WeatherLocation) {
         
-        WeeklyForecast.downloadWeeklyForecastWeather(location: weahterLaction) { (weahterForecasts) in
+        WeeklyForecast.downloadWeeklyForecastWeather(location: location) { (weahterForecasts) in
             weatherView.weeklyWeahterForecastData = weahterForecasts
             weatherView.tableView.reloadData()
         }
         
     }
-    private func getHourlyWeather(weatherView:WeatherView) {
+    private func getHourlyWeather(weatherView:WeatherView,location:WeatherLocation) {
         
-        HourlyForecast.downloadHourlyForecastWeather(location: weahterLaction) { (weatherForecasts) in
+        HourlyForecast.downloadHourlyForecastWeather(location: location) { (weatherForecasts) in
             weatherView.dailyWeatherForecastData = weatherForecasts
             weatherView.hourlyWeatherCollectionView.reloadData()
         }
@@ -76,6 +60,31 @@ class WeatherViewController: UIViewController {
     
     private func getWeather() {
         loadLocationFromUserDefaults()
+        createWeatherViews()
+        addWeatherToScrollView()
+    }
+    
+    private func createWeatherViews() {
+        for _ in allLocations {
+            allWeatherViews.append(WeatherView())
+            print(allWeatherViews.count)
+        }
+    }
+    
+    private func addWeatherToScrollView() {
+        for i in 0..<allWeatherViews.count {
+            let weatherView = allWeatherViews[i]
+            let location = allLocations[i]
+            
+            getCurrentWeather(weatherView: weatherView, location: location)
+            getHourlyWeather(weatherView: weatherView, location: location)
+            getWeeklyWeahter(weatherView: weatherView, location: location)
+            
+            let xPos = self.view.frame.width * CGFloat(i)
+            weatherView.frame = CGRect(x: xPos, y: 0, width: scrollView.bounds.width, height: scrollView.bounds.height)
+            scrollView.addSubview(weatherView)
+            scrollView.contentSize.width = weatherView.frame.width * CGFloat(i + 1)
+        }
     }
     
     private func loadLocationFromUserDefaults() {
@@ -84,7 +93,6 @@ class WeatherViewController: UIViewController {
         
         if let data = userDefaults.value(forKey: "Locations") as? Data {
             allLocations = try! PropertyListDecoder().decode(Array<WeatherLocation>.self, from: data)
-            
             allLocations.insert(currentLocation, at: 0)
             
         }else {
@@ -110,8 +118,6 @@ class WeatherViewController: UIViewController {
             locationManager!.stopMonitoringSignificantLocationChanges()
         }
     }
-    
-  
 }
 
 extension WeatherViewController:CLLocationManagerDelegate{
@@ -127,9 +133,8 @@ extension WeatherViewController:CLLocationManagerDelegate{
                 LocationService.shared.latitude = currentLocation.latitude
                 LocationService.shared.longitude = currentLocation.longitude
                 getWeather()
-                
             }else{
-                locationManagerDidChangeAuthorization(manager) 
+                getWeather()
             }
         }else{
             print("위치 정보를 설정해주세요!")
