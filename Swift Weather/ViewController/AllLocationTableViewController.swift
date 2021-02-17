@@ -7,14 +7,21 @@
 
 import UIKit
 
-class AllLocationTableViewController: UITableViewController {
+protocol AllLocationTableViewControllerDelegate {
+    func didChooseLocation(atIndex:Int,shouldRefresh:Bool)
+}
 
+class AllLocationTableViewController: UITableViewController {
     
     //MARK:Variables
 
     var savedLocations:[WeatherLocation]?
-    var userDefaults = UserDefaults.standard
+    let userDefaults = UserDefaults.standard
     var weatherData = [CityTempData]()
+    
+    var shouldRefresh = false
+    
+    var delegate:AllLocationTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +84,9 @@ class AllLocationTableViewController: UITableViewController {
     }
     
     private func saveNewLocationToUserDefaults() {
+        
+        shouldRefresh = true
+        
         userDefaults.setValue(try? PropertyListEncoder().encode(savedLocations!), forKey: "Locations")
         userDefaults.synchronize()
     }
@@ -84,13 +94,17 @@ class AllLocationTableViewController: UITableViewController {
 
 extension AllLocationTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select")
+        tableView.deselectRow(at: indexPath, animated: true)
+        delegate?.didChooseLocation(atIndex: indexPath.row, shouldRefresh: shouldRefresh)
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
 
 extension AllLocationTableViewController:ChooseCityViewControllerDelegate {
     func didAdd(newLocation: WeatherLocation) {
-        print("We have added new location \(newLocation.city)")
+        shouldRefresh = true
+        weatherData.append(CityTempData(city: newLocation.city, temp: 0.0))
+        tableView.reloadData()
     }
 }

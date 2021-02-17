@@ -26,11 +26,20 @@ class WeatherViewController: UIViewController {
     var allWeatherViews:[WeatherView] = []
     var allWeatherData:[CityTempData] = []
     
+    var shouldRefresh = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManagerStart()
         scrollView.delegate = self
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if shouldRefresh {
+            allLocations = []
+            allWeatherViews = []
+            locationManagerDidChangeAuthorization(locationManager!)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -140,6 +149,14 @@ class WeatherViewController: UIViewController {
             allWeatherData.append(tempData)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAllLocationTableViewController" {
+            let vc = segue.destination as! AllLocationTableViewController
+            vc.weatherData = allWeatherData
+            vc.delegate = self
+        }
+    }
 }
 
 extension WeatherViewController:CLLocationManagerDelegate{
@@ -169,5 +186,17 @@ extension WeatherViewController:UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let value = scrollView.contentOffset.x/scrollView.frame.size.width
         setPageControlSelectedPage(currentPage: Int(round(value)))
+    }
+}
+
+extension WeatherViewController:AllLocationTableViewControllerDelegate {
+    //AllLocationViewContrller에서 특정 도시를 선택하고 돌아오면 해당 도시의 스크롤뷰 위치를 알아내서 리프레쉬한다.
+    func didChooseLocation(atIndex: Int, shouldRefresh: Bool) {
+        let viewNumber = CGFloat(integerLiteral: atIndex)
+        let newOffset = CGPoint(x: (scrollView.frame.width + 1) * viewNumber, y: 0)
+        scrollView.setContentOffset(newOffset, animated: true)
+        setPageControlSelectedPage(currentPage: atIndex)
+        
+        self.shouldRefresh = shouldRefresh
     }
 }

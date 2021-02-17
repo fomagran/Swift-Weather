@@ -156,6 +156,8 @@ class CurrentWeather {
                 
                 
             case .failure(let error):
+                //API에서 아무것도 결과를 주지 않을때를 대비함.
+                self._city = location.city
                 completion(false)
                 print(error.errorDescription ?? "")
             default:

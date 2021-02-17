@@ -36,7 +36,7 @@
                                     <barButtonItem systemItem="add" id="qpa-dN-ylV">
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <segue destination="nGH-fe-b9Y" kind="show" id="jhJ-M6-aDh"/>
+                                            <segue destination="nGH-fe-b9Y" kind="show" identifier="showAllLocationTableViewController" id="jhJ-M6-aDh"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
