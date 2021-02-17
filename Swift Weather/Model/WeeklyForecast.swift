@@ -37,7 +37,7 @@ class WeeklyForecast {
     
     init(weatherDictionary:Dictionary<String,Any>) {
         let json = JSON(weatherDictionary)
-        self._temperature = json["temp"].double
+        self._temperature =  getTempBasedOnSettings(celsious: json["temp"].double ?? 0.0)
         self._date = currentDateFromUnix(unixDate: json["ts"].double!)
         self._weatherIcon = json["weather"]["icon"].string
     }
