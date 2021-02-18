@@ -9,6 +9,7 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
+    //왜 커밋이 안되지
     @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
