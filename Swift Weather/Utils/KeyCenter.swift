@@ -8,5 +8,5 @@
 import Foundation
 
 struct KeyCenter {
-    let key = "7db3d9a63ac04f71b3de7601957edba4"
+    static let key = "7db3d9a63ac04f71b3de7601957edba4"
 }

@@ -12,24 +12,31 @@ class WeatherView: UIView {
     //MARK:IBOutlets
     
     @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var weatherInfoLabel: UILabel!
     @IBOutlet weak var weeklyTableView: UITableView!
     @IBOutlet weak var hourlyInfoCollectionView: UICollectionView!
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     
+    var currentWeather:CurrentWeather!
     //MARK:LifeCycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupTableView()
-        setupCollectionView()
+       
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
       
+    }
+    
+    func setupCurrentWeather() {
+        self.cityLabel.text = currentWeather.city
+        self.dateLabel.text = "Today, \(currentWeather.date)"
+        self.tempLabel.text = "\(currentWeather.temp)"
+        self.weatherInfoLabel.text = currentWeather.weatherInfo
     }
     
     
