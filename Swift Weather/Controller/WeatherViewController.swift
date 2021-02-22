@@ -32,6 +32,7 @@ class WeatherViewController: UIViewController {
         weatherView.frame = CGRect(x: 0, y: 0, width: self.scrollView.bounds.width, height: self.scrollView.bounds.height)
         getCurrentWeather(weatherView: weatherView)
         getHourlyWeather(weatherView: weatherView)
+        getWeeklyWeather(weatherView: weatherView)
         self.scrollView.addSubview(weatherView)
         
     }
@@ -48,6 +49,13 @@ class WeatherViewController: UIViewController {
         HourlyWeather.getHourlyWeather { (hourlyWeathers) in
             weatherView.hourlyWeathers = hourlyWeathers
             weatherView.hourlyCollectionView.reloadData()
+        }
+    }
+    
+    private func getWeeklyWeather(weatherView:WeatherView) {
+        WeeklyWeather.getWeeklyWeather { (weeklyWeathers) in
+            weatherView.weeklyWeathers = weeklyWeathers
+            weatherView.weeklyTableView.reloadData()
         }
     }
     

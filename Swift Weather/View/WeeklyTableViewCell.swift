@@ -24,4 +24,10 @@ class WeeklyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func generateCell(weather:WeeklyWeather) {
+        weekLabel.text = weather.date
+        weatherImage.image = getWeatherIconFor(weather.weatherIcon)
+        tempLabel.text = "\(weather.temp)"
+    }
+    
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,31 +15,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seoul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCU-YK-0B1">
-                    <rect key="frame" x="20" y="18" width="43" height="21"/>
+                    <rect key="frame" x="20" y="62" width="43" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today,Feb 18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGR-jj-dhc">
-                    <rect key="frame" x="20" y="47" width="100" height="21"/>
+                    <rect key="frame" x="20" y="91" width="100" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-8°C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPx-Mm-cPQ">
-                    <rect key="frame" x="172.5" y="98" width="69" height="36"/>
+                    <rect key="frame" x="172.5" y="142" width="69" height="36"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clear sky" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbt-Dr-T46">
-                    <rect key="frame" x="172" y="154" width="70.5" height="21"/>
+                    <rect key="frame" x="172" y="198" width="70.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="HourlyCollectionView" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="51r-e1-Je4">
-                    <rect key="frame" x="2" y="205" width="412" height="100"/>
+                    <rect key="frame" x="2" y="249" width="412" height="100"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="WPK-eY-kK3"/>
@@ -50,53 +51,35 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="HourlyInfoCollectionView" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uIL-IF-rcr">
-                    <rect key="frame" x="2" y="307" width="412" height="100"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="fGD-Wu-xNS"/>
-                    </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Nwy-tc-a3e">
-                        <size key="itemSize" width="60" height="100"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wda-oj-rzL">
-                    <rect key="frame" x="0.0" y="409" width="414" height="487"/>
+                    <rect key="frame" x="0.0" y="354" width="414" height="542"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="uIL-IF-rcr" firstAttribute="top" secondItem="51r-e1-Je4" secondAttribute="bottom" constant="2" id="4xF-PP-7LB"/>
                 <constraint firstItem="51r-e1-Je4" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Daa-NO-Qna"/>
+                <constraint firstItem="wda-oj-rzL" firstAttribute="top" secondItem="51r-e1-Je4" secondAttribute="bottom" constant="5" id="Hdt-ze-IoZ"/>
                 <constraint firstItem="51r-e1-Je4" firstAttribute="top" secondItem="Fbt-Dr-T46" secondAttribute="bottom" constant="30" id="JLr-Ah-dZu"/>
                 <constraint firstItem="VPx-Mm-cPQ" firstAttribute="top" secondItem="zGR-jj-dhc" secondAttribute="bottom" constant="30" id="KkF-tr-Kqq"/>
                 <constraint firstItem="zGR-jj-dhc" firstAttribute="leading" secondItem="iCU-YK-0B1" secondAttribute="leading" id="ZeX-nq-sbe"/>
                 <constraint firstItem="wda-oj-rzL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aB3-aC-hpJ"/>
-                <constraint firstItem="uIL-IF-rcr" firstAttribute="top" secondItem="51r-e1-Je4" secondAttribute="bottom" constant="2" id="b3R-3V-wqM"/>
                 <constraint firstItem="Fbt-Dr-T46" firstAttribute="centerX" secondItem="VPx-Mm-cPQ" secondAttribute="centerX" id="bIR-RR-vkV"/>
                 <constraint firstItem="51r-e1-Je4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="2" id="cGc-Nt-D8C"/>
                 <constraint firstItem="iCU-YK-0B1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="18" id="ffd-GH-Xpd"/>
-                <constraint firstItem="uIL-IF-rcr" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="fup-nt-fZa"/>
-                <constraint firstItem="wda-oj-rzL" firstAttribute="top" secondItem="uIL-IF-rcr" secondAttribute="bottom" constant="2" id="gDJ-QL-fRd"/>
                 <constraint firstItem="iCU-YK-0B1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="gs4-4T-Lq5"/>
                 <constraint firstItem="zGR-jj-dhc" firstAttribute="top" secondItem="iCU-YK-0B1" secondAttribute="bottom" constant="8" symbolic="YES" id="k8D-gs-xRn"/>
                 <constraint firstItem="Fbt-Dr-T46" firstAttribute="top" secondItem="VPx-Mm-cPQ" secondAttribute="bottom" constant="20" id="l78-I3-0ss"/>
                 <constraint firstItem="VPx-Mm-cPQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="o1R-u0-APp"/>
                 <constraint firstItem="wda-oj-rzL" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="sfc-CB-f0c"/>
                 <constraint firstAttribute="bottom" secondItem="wda-oj-rzL" secondAttribute="bottom" id="uQn-rY-r42"/>
-                <constraint firstItem="uIL-IF-rcr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="2" id="xEW-7a-zzD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="cityLabel" destination="iCU-YK-0B1" id="RAK-cf-nTO"/>
                 <outlet property="dateLabel" destination="zGR-jj-dhc" id="8ME-ER-TvP"/>
                 <outlet property="hourlyCollectionView" destination="51r-e1-Je4" id="5rG-pi-zDy"/>
-                <outlet property="hourlyInfoCollectionView" destination="uIL-IF-rcr" id="3ch-ql-ezD"/>
                 <outlet property="tempLabel" destination="VPx-Mm-cPQ" id="Vaq-wI-inE"/>
                 <outlet property="weatherInfoLabel" destination="Fbt-Dr-T46" id="lej-ON-Tgg"/>
                 <outlet property="weeklyTableView" destination="wda-oj-rzL" id="OUT-kY-EcC"/>

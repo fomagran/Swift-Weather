@@ -21,6 +21,7 @@ class WeatherView: UIView {
     
     var currentWeather:CurrentWeather!
     var hourlyWeathers:[HourlyWeather] = []
+    var weeklyWeathers:[WeeklyWeather] = []
     
     //MARK:LifeCycle
     
@@ -57,9 +58,6 @@ class WeatherView: UIView {
     func setupCollectionView(){
         hourlyCollectionView.register(UINib(nibName: "HourlyCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Cell")
         hourlyCollectionView.dataSource = self
-        
-        hourlyInfoCollectionView.register(UINib(nibName: "HourlyInfoCollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Cell")
-        hourlyInfoCollectionView.dataSource = self
     }
     
 }
@@ -68,11 +66,12 @@ class WeatherView: UIView {
 
 extension WeatherView:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        weeklyWeathers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! WeeklyTableViewCell
+        cell.generateCell(weather: weeklyWeathers[indexPath.row])
         return cell
     }
     
@@ -84,18 +83,13 @@ extension WeatherView:UITableViewDelegate,UITableViewDataSource{
 extension WeatherView:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return collectionView == hourlyCollectionView ? hourlyWeathers.count : 0
+        return hourlyWeathers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == hourlyCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as!
-                HourlyCollectionViewCell
-            cell.generateCell(hourlyWeahter: hourlyWeathers[indexPath.item])
-            return cell
-        }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HourlyInfoCollectionViewCell
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as!
+            HourlyCollectionViewCell
+        cell.generateCell(hourlyWeahter: hourlyWeathers[indexPath.item])
+        return cell
     }
 }
