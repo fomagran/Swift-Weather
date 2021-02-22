@@ -20,16 +20,25 @@ class WeatherView: UIView {
     @IBOutlet weak var hourlyCollectionView: UICollectionView!
     
     var currentWeather:CurrentWeather!
+    var hourlyWeathers:[HourlyWeather] = []
+    
     //MARK:LifeCycle
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-       
+
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
       
+    }
+    
+    func setupAll() {
+        setupCurrentWeather()
+        setupCollectionView()
+        setupTableView()
     }
     
     func setupCurrentWeather() {
@@ -74,12 +83,15 @@ extension WeatherView:UITableViewDelegate,UITableViewDataSource{
 
 extension WeatherView:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        
+        return collectionView == hourlyCollectionView ? hourlyWeathers.count : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == hourlyCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HourlyCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as!
+                HourlyCollectionViewCell
+            cell.generateCell(hourlyWeahter: hourlyWeathers[indexPath.item])
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HourlyInfoCollectionViewCell

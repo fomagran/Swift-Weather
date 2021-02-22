@@ -16,7 +16,7 @@ class CurrentWeather {
     var temp:Double = 0.0
     var weatherInfo:String = ""
     
-    func getCurrentWeather(completion:@escaping(_ success:Bool) -> Void) {
+    func getCurrentWeather(completion:@escaping() -> Void) {
         let lon = LocationService.shared.longitude!
         let lat = LocationService.shared.latitude!
         let path =  "https://api.weatherbit.io/v2.0/current?lat=\(lat)&lon=\( lon)&key=\(KeyCenter.key)&include=minutely"
@@ -32,11 +32,11 @@ class CurrentWeather {
                 self.city = data["city_name"].stringValue
                 self.date = currentDateFromUnix(unixDate: data["ts"].double)?.shortDate() ?? ""
                 self.temp = data["temp"].double ?? 0.0
-                self.weatherInfo = data["description"].stringValue
-                completion(true)
+                self.weatherInfo = data["weather"]["description"].stringValue
+                completion()
                 
             case .failure(let error):
-                print(error.errorDescription)
+                print(error.errorDescription ?? "")
             default:
                 fatalError()
             }

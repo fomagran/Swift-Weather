@@ -16,5 +16,11 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
     }
+    
+    func generateCell(hourlyWeahter:HourlyWeather){
+        tempLabel.text = "\(hourlyWeahter.temp)"
+        timeLabel.text = hourlyWeahter.date
+        weatherImage.image = getWeatherIconFor(hourlyWeahter.weatherIcon)
+    }
 
 }
