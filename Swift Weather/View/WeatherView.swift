@@ -25,17 +25,6 @@ class WeatherView: UIView {
     
     //MARK:LifeCycle
     
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-      
-    }
-    
     func setupAll() {
         setupCurrentWeather()
         setupCollectionView()
@@ -62,9 +51,9 @@ class WeatherView: UIView {
     
 }
 
-//MARK:TableView Deleagate & DataSource
+//MARK:TableView DataSource
 
-extension WeatherView:UITableViewDelegate,UITableViewDataSource{
+extension WeatherView:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         weeklyWeathers.count
     }
@@ -78,11 +67,10 @@ extension WeatherView:UITableViewDelegate,UITableViewDataSource{
     
 }
 
-//MARK:CollectionView Deleagate & DataSource
+//MARK:CollectionView DataSource
 
 extension WeatherView:UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return hourlyWeathers.count
     }
     

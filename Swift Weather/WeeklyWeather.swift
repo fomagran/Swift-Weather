@@ -23,11 +23,16 @@ class WeeklyWeather {
     }
     
     
-    class func getWeeklyWeather(completion:@escaping ([WeeklyWeather]) -> Void) {
+    class func getWeeklyWeather(location:WeatherLocation,completion:@escaping ([WeeklyWeather]) -> Void) {
         
         let lat = LocationService.shared.latitude!
         let lon = LocationService.shared.longitude!
-        let path = "https://api.weatherbit.io/v2.0/forecast/daily=7?lat=\(lat)&lon=\(lon)&key=\(KeyCenter.key)"
+        var path = String()
+        if location.city == "" {
+            path =  "https://api.weatherbit.io/v2.0/current?lat=\(lat)&lon=\( lon)&key=\(KeyCenter.key)&include=minutely"
+        }else {
+            path = String(format: "https://api.weatherbit.io/v2.0/current?city=%@,%@&key=7db3d9a63ac04f71b3de7601957edba4", location.city,location.countryCode)
+        }
         
         AF.request(path).responseJSON { (response) in
             let result = response.result

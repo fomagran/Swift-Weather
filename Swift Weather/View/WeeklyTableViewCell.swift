@@ -17,17 +17,10 @@ class WeeklyTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func generateCell(weather:WeeklyWeather) {
         weekLabel.text = weather.date
         weatherImage.image = getWeatherIconFor(weather.weatherIcon)
         tempLabel.text = "\(weather.temp)"
     }
-    
 }

@@ -22,12 +22,16 @@ class HourlyWeather {
         self.weatherIcon = data["weather"]["icon"].stringValue
     }
     
-    class func getHourlyWeather(completion:@escaping([HourlyWeather]) -> Void) {
+    class func getHourlyWeather(location:WeatherLocation,completion:@escaping([HourlyWeather]) -> Void) {
         
         let lon = LocationService.shared.longitude!
         let lat = LocationService.shared.latitude!
-        
-        let path = "https://api.weatherbit.io/v2.0/forecast/hourly?lat=\(lat)&lon=\(lon)&key=\(KeyCenter.key)"
+        var path = ""
+        if location.city == "" {
+            path =  "https://api.weatherbit.io/v2.0/current?lat=\(lat)&lon=\( lon)&key=\(KeyCenter.key)&include=minutely"
+        }else {
+            path = String(format: "https://api.weatherbit.io/v2.0/current?city=%@,%@&key=7db3d9a63ac04f71b3de7601957edba4", location.city,location.countryCode)
+        }
         
         AF.request(path).responseJSON { (response) in
             let result = response.result
@@ -39,6 +43,7 @@ class HourlyWeather {
                     if let data = value["data"] as? [Dictionary<String,AnyObject>] {
                         data.forEach{hourlyWeathers.append(HourlyWeather(weatherDictionary: $0))}
                     }
+                print(hourlyWeathers.count)
                 completion(hourlyWeathers)
                 
             case .failure(let error):
