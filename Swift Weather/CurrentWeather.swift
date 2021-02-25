@@ -17,11 +17,9 @@ class CurrentWeather {
     var weatherInfo:String = ""
     
     func getCurrentWeather(location:WeatherLocation,completion:@escaping() -> Void) {
-        let lon = LocationService.shared.longitude!
-        let lat = LocationService.shared.latitude!
         var path = String()
         if location.city == "" {
-            path =  "https://api.weatherbit.io/v2.0/current?lat=\(lat)&lon=\( lon)&key=\(KeyCenter.key)&include=minutely"
+            path =  CURRENT_LOCATIONAPI_URL
         }else {
             path = String(format: "https://api.weatherbit.io/v2.0/current?city=%@,%@&key=7db3d9a63ac04f71b3de7601957edba4", location.city,location.countryCode)
         }

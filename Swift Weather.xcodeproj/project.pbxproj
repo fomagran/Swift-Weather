@@ -23,6 +23,9 @@
 		0458CC5125DF649600F15195 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458CC5025DF649600F15195 /* Extensions.swift */; };
 		04611BA025E34318005FCA54 /* HourlyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04611B9F25E34318005FCA54 /* HourlyWeather.swift */; };
 		04611BA425E35979005FCA54 /* WeeklyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04611BA325E35979005FCA54 /* WeeklyWeather.swift */; };
+		0463206E25E741A500B6BE0D /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463206D25E741A500B6BE0D /* AddViewController.swift */; };
+		0463207125E7421C00B6BE0D /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463207025E7421C00B6BE0D /* AddTableViewCell.swift */; };
+		0463207425E7476B00B6BE0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463207325E7476B00B6BE0D /* Constants.swift */; };
 		04A79E9A25B6BDC400754FDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A79E9925B6BDC400754FDD /* AppDelegate.swift */; };
 		04A79E9C25B6BDC400754FDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A79E9B25B6BDC400754FDD /* SceneDelegate.swift */; };
 		04A79EA125B6BDC400754FDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A79E9F25B6BDC400754FDD /* Main.storyboard */; };
@@ -48,6 +51,9 @@
 		0458CC5025DF649600F15195 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		04611B9F25E34318005FCA54 /* HourlyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeather.swift; sourceTree = "<group>"; };
 		04611BA325E35979005FCA54 /* WeeklyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWeather.swift; sourceTree = "<group>"; };
+		0463206D25E741A500B6BE0D /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		0463207025E7421C00B6BE0D /* AddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
+		0463207325E7476B00B6BE0D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		04A79E9625B6BDC400754FDD /* Swift Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A79E9925B6BDC400754FDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04A79E9B25B6BDC400754FDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 				0405943C25DDFC6400DB2644 /* KeyCenter.swift */,
 				0458CC4D25DF635B00F15195 /* GlobalHelpers.swift */,
 				0458CC5025DF649600F15195 /* Extensions.swift */,
+				0463207325E7476B00B6BE0D /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -87,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				0405946E25DE076F00DB2644 /* WeatherViewController.swift */,
+				0463206D25E741A500B6BE0D /* AddViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -118,6 +126,7 @@
 				0405945A25DE02C500DB2644 /* HourlyCollectionViewCell.xib */,
 				0405946725DE048C00DB2644 /* WeeklyTableViewCell.swift */,
 				0405946825DE048C00DB2644 /* WeeklyTableViewCell.xib */,
+				0463207025E7421C00B6BE0D /* AddTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -311,10 +320,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0405946925DE048C00DB2644 /* WeeklyTableViewCell.swift in Sources */,
+				0463207425E7476B00B6BE0D /* Constants.swift in Sources */,
 				0405945325DE000200DB2644 /* WeatherView.swift in Sources */,
 				0405943D25DDFC6400DB2644 /* KeyCenter.swift in Sources */,
 				0458CC4425DF49EB00F15195 /* CurrentWeather.swift in Sources */,
 				0458CC4725DF4B2600F15195 /* WeatherLocation.swift in Sources */,
+				0463206E25E741A500B6BE0D /* AddViewController.swift in Sources */,
 				0458CC4E25DF635B00F15195 /* GlobalHelpers.swift in Sources */,
 				0458CC4B25DF4DDA00F15195 /* LocationService.swift in Sources */,
 				0458CC5125DF649600F15195 /* Extensions.swift in Sources */,
@@ -322,6 +333,7 @@
 				0405946F25DE076F00DB2644 /* WeatherViewController.swift in Sources */,
 				04A79E9C25B6BDC400754FDD /* SceneDelegate.swift in Sources */,
 				04611BA425E35979005FCA54 /* WeeklyWeather.swift in Sources */,
+				0463207125E7421C00B6BE0D /* AddTableViewCell.swift in Sources */,
 				0405945B25DE02C500DB2644 /* HourlyCollectionViewCell.swift in Sources */,
 				04611BA025E34318005FCA54 /* HourlyWeather.swift in Sources */,
 			);

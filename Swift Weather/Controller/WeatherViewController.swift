@@ -18,45 +18,91 @@ class WeatherViewController: UIViewController {
     var locationManager:CLLocationManager?
     var currentLocation:CLLocationCoordinate2D!
     
+    let userDefaults = UserDefaults.standard
+    var allLocations:[WeatherLocation] = []
+    var allWeatherViews:[WeatherView] = []
+    
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
   
     override func viewDidLoad() {
         super.viewDidLoad()
         requestAuthorization()
-        setupWeatherView()
+
     }
     
-    private func setupWeatherView() {
-        let weatherView = Bundle.main.loadNibNamed("WeatherView", owner: self, options: nil)?.first as! WeatherView
-        weatherView.frame = CGRect(x: 0, y: 0, width: self.scrollView.bounds.width, height: self.scrollView.bounds.height)
-        getCurrentWeather(weatherView: weatherView)
-        getHourlyWeather(weatherView: weatherView)
-        getWeeklyWeather(weatherView: weatherView)
-        self.scrollView.addSubview(weatherView)
-        
-    }
-    
-    
-    private func getCurrentWeather(weatherView:WeatherView) {
+    private func getCurrentWeather(weatherView:WeatherView,location:WeatherLocation) {
         weatherView.currentWeather = CurrentWeather()
-        weatherView.currentWeather.getCurrentWeather {
+        weatherView.currentWeather.getCurrentWeather(location:location) {
             weatherView.setupAll()
         }
     }
     
-    private func getHourlyWeather(weatherView:WeatherView) {
-        HourlyWeather.getHourlyWeather { (hourlyWeathers) in
+    private func getHourlyWeather(weatherView:WeatherView,location:WeatherLocation) {
+        HourlyWeather.getHourlyWeather(location:location) { (hourlyWeathers) in
             weatherView.hourlyWeathers = hourlyWeathers
             weatherView.hourlyCollectionView.reloadData()
         }
     }
     
-    private func getWeeklyWeather(weatherView:WeatherView) {
-        WeeklyWeather.getWeeklyWeather { (weeklyWeathers) in
+    private func getWeeklyWeather(weatherView:WeatherView,location:WeatherLocation) {
+        WeeklyWeather.getWeeklyWeather(location:location) { (weeklyWeathers) in
             weatherView.weeklyWeathers = weeklyWeathers
             weatherView.weeklyTableView.reloadData()
         }
+    }
+    
+    private func getWeather() {
+          loadLocationFromUserDefaults()
+          createWeatherViews()
+          addWeatherToScrollView()
+          setPageControl()
+      }
+      
+      private func createWeatherViews() {
+          for _ in allLocations {
+            let weatherView = Bundle.main.loadNibNamed("WeatherView", owner: self, options: nil)?.first as! WeatherView
+              allWeatherViews.append(weatherView)
+          }
+      }
+    
+    private func addWeatherToScrollView() {
+        for i in 0..<allLocations.count {
+               let weatherView = allWeatherViews[i]
+               let location = allLocations[i]
+               
+               getCurrentWeather(weatherView: weatherView, location: location)
+               getHourlyWeather(weatherView: weatherView, location: location)
+               getWeeklyWeather(weatherView: weatherView, location: location)
+               
+               let xPos = self.view.frame.width * CGFloat(i)
+               weatherView.frame = CGRect(x: xPos, y: 0, width: scrollView.bounds.width, height: scrollView.bounds.height)
+               scrollView.addSubview(weatherView)
+               scrollView.contentSize.width = weatherView.frame.width * CGFloat(i + 1)
+           }
+       }
+    
+    private func loadLocationFromUserDefaults() {
+           
+           let currentLocation = WeatherLocation(city: "", country: "", countryCode: "")
+           
+           if let data = userDefaults.value(forKey: "Locations") as? Data {
+               allLocations = try! PropertyListDecoder().decode(Array<WeatherLocation>.self, from: data)
+               allLocations.insert(currentLocation, at: 0)
+               
+           }else {
+               allLocations.append(currentLocation)
+           }
+       }
+    
+    private func setPageControl() {
+        pageControl.numberOfPages = allWeatherViews.count
+        
+    }
+    
+    private func setPageControlSelectedPage(currentPage:Int) {
+        pageControl.currentPage = currentPage
     }
     
     
@@ -70,7 +116,6 @@ class WeatherViewController: UIViewController {
             //앱을 사용할때 권한요청
             locationManager!.requestWhenInUseAuthorization()
             locationManager!.delegate = self
-            locationManagerDidChangeAuthorization(locationManager!)
         }else{
             //사용자의 위치가 바뀌고 있는지 확인하는 메소드
             locationManager!.startMonitoringSignificantLocationChanges()
@@ -80,7 +125,10 @@ class WeatherViewController: UIViewController {
 
 //MARK:ScrollView Delegate
 extension WeatherViewController:UIScrollViewDelegate {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+          let value = scrollView.contentOffset.x/scrollView.frame.size.width
+          setPageControlSelectedPage(currentPage: Int(round(value)))
+      }
 }
 
 //MARK:CLLocationManager Delegate
@@ -91,6 +139,7 @@ extension WeatherViewController:CLLocationManagerDelegate {
             currentLocation = locationManager!.location?.coordinate
             LocationService.shared.longitude = currentLocation.longitude
             LocationService.shared.latitude = currentLocation.latitude
+            getWeather()
         }
     }
 }
